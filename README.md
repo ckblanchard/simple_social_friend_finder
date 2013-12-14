@@ -5,7 +5,7 @@
 1. Install gem dependencies.
     `$ bundle`
 
-1. Configure [.env.example](#environment-variables) using your environment's preferred method
+1. Configure [environment variables](.env.example) using your environment's preferred method
 
 1. Set up your database
    `$ rake db:setup`
