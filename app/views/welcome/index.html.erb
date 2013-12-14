@@ -1,0 +1,30 @@
+<div class="row">
+
+<% if user_signed_in? %>
+  Signed in as <%= current_user.name %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %><br />
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %><br />
+  <%#= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+<% end %>
+
+<h1>Social Friend Finder</h1>
+<p>Authorize your account above, and then start typing below to find friends from those networks</p>
+<br />
+
+<% if user_signed_in? %>
+  <%= form_for :friend do |f| %>
+    <%#= f.label :name %><br />
+    <%= f.text_field :name, data: { autocomplete_url: friends_url } %>
+    <%= f.submit "Add friend to list", id: "friend_submit" %>
+  <% end %>
+
+<br />
+<br />
+
+<ul class="friends_list">
+  <li>FRIEND LIST</li>
+</ul>
+<% end %>
+</div>
